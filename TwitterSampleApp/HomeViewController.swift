@@ -19,7 +19,7 @@ class HomeViewController: UIViewController, UITableViewDelegate{
         tableView.tableFooterView = UIView()
         
         // Identifierを設定
-//        self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
+        self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
         
         setTwitterData()
     }
@@ -44,8 +44,8 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell") as! TableViewCell
+//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell") as! TableViewCell
         let twitterDataModel: TwitterDataModel = twitterDataList[indexPath.row]
         cell.textLabel?.text = twitterDataModel.tweet
         cell.detailTextLabel?.text = twitterDataModel.userName
