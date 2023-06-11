@@ -35,6 +35,13 @@ class HomeViewController: UIViewController, UITableViewDelegate{
             twitterDataList.append(twitterDataModel)
         }
     }
+    
+    func initTavleView(){
+        tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
+        tableView.estimatedRowHeight = 300
+        tableView.rowHeight = UITableView.automaticDimension
+    }
+    
 }
 
 
@@ -50,6 +57,10 @@ extension HomeViewController: UITableViewDataSource {
         cell.textLabel?.text = twitterDataModel.tweet
         cell.detailTextLabel?.text = twitterDataModel.userName
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension    // 自動設定
     }
     
 

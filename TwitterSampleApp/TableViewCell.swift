@@ -8,10 +8,11 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-    @IBOutlet weak var btnDelete: UIButton!
-    @IBOutlet weak var btnEdit: UIButton!
-    @IBOutlet weak var lblTweet: UILabel!
-    @IBOutlet weak var lblUserName: UILabel!
+    @IBOutlet weak var deleteBtn: UIButton!
+    @IBOutlet weak var editBtn: UIButton!
+    @IBOutlet weak var tweetLbl: UILabel!
+    @IBOutlet weak var userNameLbl: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
