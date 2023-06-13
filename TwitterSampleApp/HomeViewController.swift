@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, UITableViewDelegate{
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
+        initTableView()
         
         // Identifierを設定
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
@@ -30,13 +31,16 @@ class HomeViewController: UIViewController, UITableViewDelegate{
     }
     
     func setTwitterData() {
-        for i in 1...5 {
+        for i in 1...4 {
             let twitterDataModel = TwitterDataModel(userName: "ユーザー\(i)", tweet: "ツイート本文\(i)ツイート本文\(i)ツイート本文\(i)ツイート本文\(i)ツイート本文\(i)")
             twitterDataList.append(twitterDataModel)
         }
+        let twitterDataModel = TwitterDataModel(userName: "ユーザー5", tweet: "ツイート本文5ツイート本文5ツイート本文5ツイート本文5ツイート本文5ツイート本文5ツイート本文5ツイート本文5ツイート本文5ツイート本文5ツイート本文5ツイート本文5ツイート本文5ツイート本文5ツイート本文5")
+        twitterDataList.append(twitterDataModel)
+
     }
     
-    func initTavleView(){
+    func initTableView(){
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
         tableView.estimatedRowHeight = 300
         tableView.rowHeight = UITableView.automaticDimension
@@ -54,8 +58,7 @@ extension HomeViewController: UITableViewDataSource {
 //        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell") as! TableViewCell
         let twitterDataModel: TwitterDataModel = twitterDataList[indexPath.row]
-        cell.textLabel?.text = twitterDataModel.tweet
-        cell.detailTextLabel?.text = twitterDataModel.userName
+        cell.setup(twitterDataModel: twitterDataModel)
         return cell
     }
     

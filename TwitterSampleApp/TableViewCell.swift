@@ -25,4 +25,9 @@ class TableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+//    func setup(tweet: String, userName:String){
+    func setup(twitterDataModel: TwitterDataModel){
+        tweetLbl.text = twitterDataModel.tweet
+        userNameLbl.text = twitterDataModel.userName
+    }
 }
